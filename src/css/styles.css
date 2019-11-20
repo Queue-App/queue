@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:700|Raleway:400,700&display=swap');
+:root {
+    /* font-size 62.5% makes 1rem = 10px, rem used for dyanmic sizing */
+    font-size: 62.5%;
+    height: 100%;
+    width: 100%;
+  }
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+
+.logo {
+    height: 22px;
+    width: 22px;
+    margin-bottom: 5px;
+}
+
+.navbar {
+    /* position: absolute;
+    top: 0; */
+    height: 60px;
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    position: fixed;
+    overflow: hidden;
+}
+
+
+
+
+
+
+.align-v {
+    vertical-align: middle;
+}
+span.brand {
+    font-weight: 800;
+    font-size: 20px;
+    font-family: 'Noto Serif', serif;
+    margin-left: 10px;
+}
+.auth-buttons {
+    display: flex;
+    justify-content: space-around;
+    display: flex;
+    justify-content: center;
+}
+.navbar-toggler {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+}
+.fd-row {
+    flex-direction: row;
+  }
+/* non-desktop only */
+.collapse {
+    background-color: #F8F9FA;
+}
+.flex {
+    display: flex;
+}
+.j-center {
+    justify-content: center;
+}
+.fd-col {
+    flex-direction: column;
+}
+
+.auth-btn {
+    font-size: 20px;
+}
+.nav-link {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    font-family: 'Noto Serif', serif;
+}
+
+.container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(89, 89, 89);
+    font-size: 20px;
+    flex-direction: column;
+}
+
+.bg1 {
+    background-color: rgba(249, 249, 249, 0.728);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.btn {
+    font-size: 20px;
+}
+
+/* favorites component */
+
+.favorites-container h2 {
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+}
+
+.fixed {
+    margin-top:60px;
+    position: fixed;
+    z-index: 2px;
+}
+
+.new-map {
+    position: absolute;
+    top: 200px;
+}
+
+.search-bar {
+    z-index: 2;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
