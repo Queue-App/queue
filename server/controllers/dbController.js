@@ -4,8 +4,6 @@ const dbController = {};
 
 dbController.createUser = (req, res, next) => {
     const { username, password } = req.body;
-    console.log(username, password);
-    console.log('hit createUser controller')
     const queryStr = `
     INSERT INTO users (username, password)
     VALUES ($1, $2)
@@ -69,29 +67,8 @@ dbController.addWaitTime = (req, res, next) => {
             });
         }
         res.locals.results = data;
-        // console.log(res.locals.results);
         return next();
     })
-
-    // need to add async before (req, resp, next) if doing below method
-    // try {
-    //     const queryStr = `
-    //     INSERT INTO WaitTimes (WaitTime, VenueID)
-    //     VALUES ($1, $2)
-    //     RETURNING *
-    //     `;
-    //     const params = [ waitTime, venueId ];
-    //     const result = await db.query(queryStr, params);
-    //     res.locals.results = result.rows[0];
-    //     console.log(res.locals.results);
-    //     return next();
-    // }
-    // catch (err) {
-    //     next({
-    //         log: `dbController.addWaitTime: ERROR: ${err}`,
-    //         message: { err: 'Error occurred in dbController.addWaitTime.' }
-    //     });
-    // }
 }
 
 dbController.getWaitTimes = async (req, res, next) => {

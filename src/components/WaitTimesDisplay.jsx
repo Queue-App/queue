@@ -22,13 +22,11 @@ class WaitTimesDisplay extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
       const waitTimes = [];
       for (let i = 0; i <= data.length; i++) {
         if (data[i]) {
           let time = data[i]["timestamp"].split(/[- : T .]/);
           let timestamp = new Date(Date.UTC(time[0], time[1]-1, time[2], time[3], time[4], time[5]))
-          console.log(timestamp);
           waitTimes.push(<div key={i}>{data[i]["waittime"]} minutes - last updated {`${timestamp}`}</div>)
         }
       }
@@ -37,7 +35,7 @@ class WaitTimesDisplay extends Component {
       })
     })
     .catch((err) => {
-      console.log(`${err}: getWaitTime func err when getting wait time`)
+      throw new Error('getWaitTime func err when getting wait time');
     })
   }
 
