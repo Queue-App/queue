@@ -8,19 +8,15 @@ const apiController = {};
 apiController.geolocation = (req, res, next) => {
   axios.get(`http://api.ipapi.com/api/check?access_key=${process.env.REACT_APP_GEO_API_KEY}`)
     .then(response => {
-      // console.log('GEOLOCATION RES __> ', response.data.zip);
       res.locals.zipcode = response.data.zip;
-      // console.log('RES LOCALS ZIP ---> ', res.locals.zipcode);
       return next();
     })
     .catch(err => {
-      console.log('ERROR in apiController.geolocation : ', err);
+      throw new Error(`ERROR in apiController.geolocation: ${err}`)
     })
 }
 
 apiController.yelp = (req, res, next) => {
-  // console.log('REQ.BODY --> ', req.body);
-  // console.log('in middleware func')
   // const ENDPOINT = 'https://api.yelp.com/v3/businesses/search';
 
   // Create a new yelpAPI object with your API key
@@ -35,13 +31,12 @@ apiController.yelp = (req, res, next) => {
   yelp.query('businesses/search', params)
   .then(data => {
     // Success
-    // console.log('BUSINESSES --> : ', data);
     res.locals.businesses = data;
     return next();
   })
   .catch(err => {
     // Failure
-    console.log(err);
+    throw new Error(`ERROR in apiController.yelp: ${err}`)
   });
 }
 

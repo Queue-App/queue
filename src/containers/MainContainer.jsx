@@ -82,11 +82,9 @@ class MainContainer extends Component {
 
   setSearchInput(event) {
     this.setState({ searchInput: event.target.value });
-    // console.log(this.state.searchResults)
   }
 
   search() {
-    // console.log('THIS STATE LOCATION : ', this.state.location);
     fetch ('/api', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -95,18 +93,14 @@ class MainContainer extends Component {
       .then(response => response.json())  
       .then(data => {
         const parsedData = JSON.parse(data);
-        // console.log('PARSEDDATA: ', parsedData);
-        // console.log('introspecting the data: ', parsedData.businesses[0])
 
         // Coordinates used for map rendered in Category Container (List Page)
         const firstBusinessLatitude = parsedData.businesses[0].coordinates.latitude;
         const firstBusinessLongitude = parsedData.businesses[0].coordinates.longitude;
         
         const listOfBusinesses = [];
-        // console.log(parsedData.businesses.length)
         if (this.state.current <= 50) {
           for (let i = 0; i < this.state.current; i += 1) {
-            // console.log('LIST BUSINESSES -> ', listOfBusinesses)
             listOfBusinesses.push({
               id: parsedData.businesses[i].id, 
               name: parsedData.businesses[i].name, 
@@ -178,15 +172,14 @@ class MainContainer extends Component {
       venueId: this.state.venueId,
       venueName: this.state.venueName,
     }
-    // console.log(body);
     fetch('/dbRouter/addWaitTime', {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json'}
     })
-    .then(() => console.log('addwaittime fetch request successful'))
+    .then(() => {})
     .catch((err) => {
-      console.log(`${err}: addWaitTime function error when adding wait time`)
+      throw new Error('addWaitTime function error when adding wait time')
     })
   }
 

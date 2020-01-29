@@ -10,8 +10,6 @@ class CategoryContainer extends Component {
     
     if (this.props.categoryPage && this.props.current < 50) {
       window.onscroll = debounce(() => {
-        console.log('scrolling')
-
         if (this.props.current >= 50) return;
 
         if (document.documentElement.scrollTop > document.documentElement.scrollHeight - window.innerHeight - 2) {
@@ -25,8 +23,6 @@ class CategoryContainer extends Component {
     // render map and list of businessess from searchResults arr in the state
   let search = null;
   let searchDisplayResults = this.props.searchResults.map((element, i) => {
-    // console.log('search results', props.searchResults);
-    console.log('ELEMENT -> ', element);
     return <div id="list">
           <button className="list-item" key = {i} onClick={() => this.props.selectVenue(element.id, element.name, element.url, element.image, element.location, element.phone, element.latitude, element.longitude)}>
           <img src={`${element.image}`}/>
