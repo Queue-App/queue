@@ -1,7 +1,8 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 // use dontenv to hide pg_uri when ready 
-const PG_URI = process.env.REACT_APP_PG_URI;
+const PG_URI = process.env.PG_URI;
 
 const pool = new Pool({
     connectionString: PG_URI

@@ -1,12 +1,12 @@
-const express = require('express');
 const yelpAPI = require('yelp-api');
 const axios = require('axios');
+require('dotenv').config();
 
 const apiController = {};
 
 // gets the current location of the client 
 apiController.geolocation = (req, res, next) => {
-  axios.get(`http://api.ipapi.com/api/check?access_key=${process.env.REACT_APP_GEO_API_KEY}`)
+  axios.get(`http://api.ipapi.com/api/check?access_key=${process.env.GEO_API_KEY}`)
     .then(response => {
       res.locals.zipcode = response.data.zip;
       return next();
@@ -20,7 +20,7 @@ apiController.yelp = (req, res, next) => {
   // const ENDPOINT = 'https://api.yelp.com/v3/businesses/search';
 
   // Create a new yelpAPI object with your API key
-  let yelp = new yelpAPI(process.env.REACT_APP_GEO_API_KEY);
+  let yelp = new yelpAPI(process.env.YELP_API_KEY);
   
   // Set any parameters, if applicable (see API documentation for allowed params)
   // let params = [{ location: req.body.location || res.locals.zipcode, limit: 15, offset: 10}];
