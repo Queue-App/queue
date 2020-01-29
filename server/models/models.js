@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 
 // use dontenv to hide pg_uri when ready 
-const PG_URI = process.env.PG_URI;
+const PG_URI = process.env.REACT_APP_PG_URI;
 
 const pool = new Pool({
-    connectionString: 'postgres://kwqwovjz:5KiuhVnbx4dXGxkmeXS-nJw1kE_V4twU@salt.db.elephantsql.com:5432/kwqwovjz'
+    connectionString: PG_URI
 });
 
 module.exports = {
