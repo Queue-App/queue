@@ -1,15 +1,13 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
-// use dontenv to hide pg_uri when ready 
-const PG_URI = process.env.PG_URI;
+// use dontenv to hide pg_uri when ready
+const { PG_URI } = process.env;
 
 const pool = new Pool({
-    connectionString: 'postgres://kwqwovjz:5KiuhVnbx4dXGxkmeXS-nJw1kE_V4twU@salt.db.elephantsql.com:5432/kwqwovjz'
+  connectionString: PG_URI,
 });
 
 module.exports = {
-    query: (text, params, callback) => {
-      console.log('executed query', text);
-      return pool.query(text, params, callback);
-    }
-  };
+  query: (text, params, callback) => pool.query(text, params, callback),
+};
